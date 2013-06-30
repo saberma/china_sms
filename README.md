@@ -4,7 +4,7 @@
 
 所有短信平台都禁止发送私人短信，并要求在短信内容末尾加上签名后缀，如【19屋】
 
-* [推立方](http://tui3.com/) 需要审核内容格式和签名，自动在短信加上签名后缀
+* [推立方](http://tui3.com/) 需要[配置内容格式和签名](http://www.tui3.com/Members/smsconfigv2/)，自动在短信加上签名后缀
 * [短信宝](http://www.smsbao.com/)
 * [畅友网络](http://www.chanyoo.cn/)
 
@@ -25,6 +25,7 @@
 ## 使用
 
 ```ruby
+# 支持 :tui3, :smsbao, chanyoo 短信接口
 ChinaSMS.use :smsbao, username: 'YOUR_USERNAME', password: 'YOUR_PASSWORD'
 ChinaSMS.to '13912345678', '[Test]China SMS gem has been released.'
 ```

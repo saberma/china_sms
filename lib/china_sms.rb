@@ -20,6 +20,6 @@ module ChinaSMS
   end
 
   def to(receiver, content)
-    @service.to receiver, content
+    @service.to receiver, content, username: @username, password: @password
   end
 end
