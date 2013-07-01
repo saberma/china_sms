@@ -15,12 +15,17 @@ module ChinaSMS
       }
 
       def to(phone, content, options)
-        res = Net::HTTP.post_form(URI.parse(URL), u: options[:username], p: Digest::MD5.hexdigest(options[:password]), m: phone, c: content)
+        phones = Array(phone).join(',')
+        res = Net::HTTP.post_form(URI.parse(URL), u: options[:username], p: Digest::MD5.hexdigest(options[:password]), m: phones, c: content)
         result res.body
       end
 
       def result(code)
-        {success: (code == '0'), code: code, message: MESSAGES[code]}
+        {
+          success: (code == '0'),
+          code: code,
+          message: MESSAGES[code]
+        }
       end
     end
   end
