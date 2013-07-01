@@ -12,15 +12,15 @@
 
 加入以下代码到 Gemfile:
 
-  gem 'china_sms'
+    gem 'china_sms'
 
 然后执行:
 
-  $ bundle
+    $ bundle
 
 或者直接安装：
 
-  $ gem install china_sms
+    $ gem install china_sms
 
 ## 使用
 

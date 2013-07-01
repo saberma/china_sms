@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["mahb45@gmail.com"]
   spec.description   = %q{a gem for chinese people to send sms}
   spec.summary       = %q{a gem for chinese people to send sms}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/saberma/china_sms"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
