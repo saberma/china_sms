@@ -1,5 +1,7 @@
 # ChinaSMS 短信平台 Ruby 接口
 
+[![Build Status](https://travis-ci.org/saberma/china_sms.png?branch=master)](https://travis-ci.org/saberma/china_sms)
+
 ## 支持以下短信平台
 
 所有短信平台都禁止发送私人短信，并要求在短信内容末尾加上签名后缀，如【19屋】
