@@ -1,3 +1,4 @@
+# encoding: utf-8
 require "china_sms/version"
 require 'net/http'
 Dir.glob("#{File.expand_path(File.dirname(__FILE__))}/china_sms/service/*.rb").sort.each do |f|
