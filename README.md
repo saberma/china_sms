@@ -33,3 +33,10 @@
 ChinaSMS.use :tui3, username: 'YOUR_USERNAME', password: 'YOUR_PASSWORD'
 ChinaSMS.to '13912345678', '[Test]China SMS gem has been released.'
 ```
+
+## 安全性
+
+在安全性方面，很多接口都是使用用户登录明文密码，推立方 和 短信宝 要好一些。
+
+* **推立方**，不使用登录密码，而是由系统自动生成一长串 API_KEY，专用于接口调用
+* **短信宝**，使用登录密码，但在调用时要先转成 MD5
