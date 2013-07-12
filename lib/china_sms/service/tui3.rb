@@ -9,7 +9,9 @@ module ChinaSMS
       def to(phone, content, options)
         phones = Array(phone).join(',')
         res = Net::HTTP.post_form(URI.parse(URL), k: options[:password], t: phones, c: content, p: 1, r: 'json')
-        result JSON[res.body]
+        body = res.body
+        body = "{\"err_code\": 2, \"err_msg\":\"非法apikey:#{options[:password]}\"}" if body == 'invalid parameters'
+        result JSON[body]
       end
 
       def result(body)
