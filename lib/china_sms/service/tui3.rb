@@ -5,7 +5,9 @@ module ChinaSMS
   module Service
     module Tui3 # http://tui3.com/
       extend self
+
       URL = "http://tui3.com/api/send/"
+
       def to(phone, content, options)
         phones = Array(phone).join(',')
         res = Net::HTTP.post_form(URI.parse(URL), k: options[:password], t: phones, c: content, p: 1, r: 'json')
@@ -21,6 +23,7 @@ module ChinaSMS
           message: body['err_msg']
         }
       end
+
     end
   end
 end

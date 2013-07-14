@@ -7,9 +7,11 @@ end
 
 module ChinaSMS
   extend self
+
   def username
     @username
   end
+
   def password
     @password
   end
@@ -27,4 +29,5 @@ module ChinaSMS
   def clear
     @service = @username = @password = nil
   end
+
 end
