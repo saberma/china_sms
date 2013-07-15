@@ -3,7 +3,9 @@ module ChinaSMS
   module Service
     module Smsbao
       extend self
+
       URL = "http://api.smsbao.com/sms"
+
       MESSAGES = {
         '0'  => '短信发送成功',
         '30' => '密码错误',
@@ -28,6 +30,7 @@ module ChinaSMS
           message: MESSAGES[code]
         }
       end
+
     end
   end
 end
