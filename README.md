@@ -34,6 +34,14 @@ ChinaSMS.use :tui3, username: 'YOUR_USERNAME', password: 'YOUR_PASSWORD'
 ChinaSMS.to '13912345678', '[Test]China SMS gem has been released.'
 ```
 
+## 贡献
+
+```bash
+git clone git@github.com:saberma/china_sms.git
+cd china_sms
+bundle console # 请不要使用 irb，可能会有依赖问题
+```
+
 ## 安全性
 
 在安全性方面，很多接口都是使用用户登录明文密码，推立方 和 短信宝 要好一些。
