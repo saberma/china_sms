@@ -26,8 +26,8 @@ module ChinaSMS
     @service.to receiver, content, username: @username, password: @password if @service
   end
 
-  def getmo
-    @service.getmo username: @username, password: @password if @service
+  def get
+    @service.get username: @username, password: @password if @service
   end
 
   def clear
