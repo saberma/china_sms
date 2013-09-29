@@ -18,12 +18,13 @@ module ChinaSMS
 
   def use(service, options)
     @service = ChinaSMS::Service.const_get("#{service.to_s.capitalize}")
+    @service.const_set("URL", options[:base_uri]) if options[:base_uri]
     @username = options[:username]
     @password = options[:password]
   end
 
   def to(receiver, content)
-    @service.to receiver, content, username: @username, password: @password if @service
+    @service.to receiver, content.strip, username: @username, password: @password if @service
   end
 
   def get
