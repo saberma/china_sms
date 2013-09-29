@@ -3,7 +3,7 @@ module ChinaSMS
   module Service
     module Emay
       extend self
-      URL = "http://sdkhttp.eucp.b2m.cn/sdkproxy/"
+      URL = "http://sdkhttp.eucp.b2m.cn/sdkproxy"
 
       def to(phone, content, options)
         phones = Array(phone).join(',')
