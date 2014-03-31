@@ -43,7 +43,9 @@ module ChinaSMS
         options
       end
 
-      def parse_content content = '1234', company = '云片网'
+      def parse_content content, company
+        content ||= '1234'
+        company ||= '云片网'
         "#code#=#{content}&#company#=#{company}"
       end
     end
