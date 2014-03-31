@@ -4,7 +4,7 @@ module ChinaSMS
     module Yunpian
       extend self
 
-      URL = "http://yunpian.com/v1/sms/tpl_send.json"
+      URL     = "http://yunpian.com/v1/sms/tpl_send.json"
       GET_URL = "http://yunpian.com/v1/sms/get.json"
 
       def to phone, content, options = {}
