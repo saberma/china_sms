@@ -8,13 +8,7 @@ end
 module ChinaSMS
   extend self
 
-  def username
-    @username
-  end
-
-  def password
-    @password
-  end
+  attr_reader :username, :password
 
   def use(service, options)
     @service = ChinaSMS::Service.const_get("#{service.to_s.capitalize}")
@@ -23,16 +17,27 @@ module ChinaSMS
     @password = options[:password]
   end
 
-  def to(receiver, content)
-    @service.to receiver, content.strip, username: @username, password: @password if @service
+  def to(receiver, content, options = {})
+    options = default_options.merge options
+    @service.to receiver, content.strip, options if @service
   end
 
-  def get
-    @service.get username: @username, password: @password if @service
+  def get(options = {})
+    options = default_options.merge options
+    @service.get options if @service
   end
 
   def clear
     @service = @username = @password = nil
+  end
+
+  private
+
+  def default_options
+    {
+      username:  @username,
+      password:  @password
+    }
   end
 
 end
