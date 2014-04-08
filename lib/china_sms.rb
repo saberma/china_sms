@@ -19,7 +19,7 @@ module ChinaSMS
 
   def to(receiver, content, options = {})
     options = default_options.merge options
-    @service.to receiver, content.strip, options if @service
+    @service.to receiver, content, options if @service
   end
 
   def get(options = {})
