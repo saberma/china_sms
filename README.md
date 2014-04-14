@@ -35,12 +35,24 @@
 ChinaSMS.use :tui3, username: 'YOUR_USERNAME', password: 'YOUR_PASSWORD'
 ChinaSMS.to '13912345678', '[Test]China SMS gem has been released.'
 
-# :yunpian 的参数有
-#    :company    默认是 `云片网`
-#    :tpl_id     默认是 2
+
+# :yunpian
+#   如果content(第二个参数) 是字符串
+#     调用 通用接口 发送短信
+#   如果是 Hash
+#     调用 模板接口 发送短信
+#     可选参数：
+#       :tpl_id 默认是 2
 
 ChinaSMS.use :yunpian, password: 'YOUR_API_KEY'
-ChinaSMS.to '13912345678', '[Test]China SMS gem has been released.', company: '19Wu'
+
+# 通用接口
+ChinaSMS.to '13912345678', '[Test]China SMS gem has been released.'
+
+# 模板接口
+# 模板是 "您的验证码是#code#【#company#】”
+tpl_params = { code: 123, company: '19wu' }
+ChinaSMS.to '13912345678', tpl_params, tpl_id: 1
 
 ```
 
