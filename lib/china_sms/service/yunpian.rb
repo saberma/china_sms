@@ -4,7 +4,7 @@ module ChinaSMS
     module Yunpian
       extend self
 
-      GET_URL      = "http://yunpian.com/v1/sms/get.json"
+      GET_URL      = "http://yunpian.com/v1/user/get.json"
       SEND_URL     = 'http://yunpian.com/v1/sms/send.json'
       TPL_SEND_URL = 'http://yunpian.com/v1/sms/tpl_send.json'
 
@@ -59,4 +59,3 @@ module ChinaSMS
     end
   end
 end
-
