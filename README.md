@@ -11,6 +11,7 @@
 * [短信宝](http://www.smsbao.com/)
 * [畅友网络](http://www.chanyoo.cn/) 群发短信需要半小时左右的时间审核，星期五等繁忙时段会有几个小时的延时，不适合发送注册校验码等实时短信，单次最多发送500个号码
 * [亿美软通](http://www.emay.cn/)
+* [螺丝帽](http://luosimao.com/)
 
 非常感谢 [推立方](http://tui3.com/) 为 [19屋活动平台](http://19wu.com) 提供短信赞助。
 
@@ -31,7 +32,7 @@
 ## 使用
 
 ```ruby
-# 支持 :tui3, :yunpian, :smsbao, :chanyoo, :emay 短信接口
+# 支持 :tui3, :yunpian, :smsbao, :chanyoo, :emay, luosimao  短信接口
 ChinaSMS.use :tui3, username: 'YOUR_USERNAME', password: 'YOUR_PASSWORD'
 ChinaSMS.to '13912345678', '[Test]China SMS gem has been released.'
 
@@ -66,7 +67,8 @@ bundle console # 请不要使用 irb，可能会有依赖问题
 
 ## 安全性
 
-在安全性方面，很多接口都是使用用户登录明文密码，推立方 和 短信宝 要好一些。
+在安全性方面，很多接口都是使用用户登录明文密码，螺丝帽，推立方 和 短信宝 要好一些。
 
 * **推立方**，**云片网**，不使用登录密码，而是由系统自动生成一长串 API_KEY，专用于接口调用
 * **短信宝**，使用登录密码，但在调用时要先转成 MD5
+* **螺丝帽**，使用HTTPS，登录密码
