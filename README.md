@@ -49,6 +49,7 @@ ChinaSMS.use :yunpian, password: 'YOUR_API_KEY'
 
 # 通用接口
 ChinaSMS.to '13912345678', '[Test]China SMS gem has been released.'
+ChinaSMS.to '13912345678', 'China SMS gem has been released.【Test】'    # luosimao 的签名要放在后面
 
 # 模板接口
 # 模板是 "您的验证码是#code#【#company#】”
@@ -64,6 +65,10 @@ git clone git@github.com:saberma/china_sms.git
 cd china_sms
 bundle console # 请不要使用 irb，可能会有依赖问题
 ```
+
+## TODO
+
+* 签名作为参数，根据各个服务提供商的不同来确定放在内容前面还是后面，例如 luosimao 要求放在内容后面
 
 ## 安全性
 
