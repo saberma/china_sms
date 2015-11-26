@@ -37,7 +37,7 @@ describe "Tui3" do
     end
 
     context 'invalid key' do
-      let(:phone) { '13928452841' }
+      let(:phone) { '13928452888' }
       let(:password) { '666666' }
 
       before do
