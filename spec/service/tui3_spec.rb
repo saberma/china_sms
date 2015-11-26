@@ -9,7 +9,7 @@ describe "Tui3" do
     subject { ChinaSMS::Service::Tui3.to phone, content, password: password }
 
     describe 'single phone' do
-      let(:phone) { '13928452841' }
+      let(:phone) { '13928452888' }
 
       before do
         stub_request(:post, url).
@@ -23,7 +23,7 @@ describe "Tui3" do
     end
 
     describe 'multiple phones' do
-      let(:phone) { ['13928452841', '13590142385'] }
+      let(:phone) { ['13928452888', '13590142385'] }
 
       before do
         stub_request(:post, url).
