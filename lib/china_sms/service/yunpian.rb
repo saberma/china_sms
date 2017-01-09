@@ -4,9 +4,11 @@ module ChinaSMS
     module Yunpian
       extend self
 
-      GET_URL      = "http://yunpian.com/v1/user/get.json"
-      SEND_URL     = 'http://yunpian.com/v1/sms/send.json'
-      TPL_SEND_URL = 'http://yunpian.com/v1/sms/tpl_send.json'
+      GET_URL        = "https://sms.yunpian.com/v2/user/get.json"
+      SEND_URL       = 'https://sms.yunpian.com/v2/sms/batch_send.json'
+      TPL_SEND_URL   = 'https://sms.yunpian.com/v2/sms/tpl_batch_send.json'
+      VOICE_SEND_URL = 'https://voice.yunpian.com/v2/voice/send.json'
+
 
       def to phone, content, options = {}
         options[:tpl_id] ||= 2
@@ -24,6 +26,15 @@ module ChinaSMS
                 Net::HTTP.post_form(URI.parse(SEND_URL), options)
               end
 
+        result res.body
+      end
+
+      def voice_to phone, content, options = {}
+        options[:apikey] ||= options[:password]
+        except! options, :username, :password
+
+        options.merge!({mobile: phone, code: content})
+        res = Net::HTTP.post_form(URI.parse(VOICE_SEND_URL), options)
         result res.body
       end
 

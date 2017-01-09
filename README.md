@@ -56,6 +56,9 @@ ChinaSMS.to '13912345678', 'China SMS gem has been released.【Test】'    # luo
 tpl_params = { code: 123, company: '19wu' }
 ChinaSMS.to '13912345678', tpl_params, tpl_id: 1
 
+# 语音接口
+ChinaSMS.voice_to '13912345678', '6626'
+
 ```
 
 ## 贡献
