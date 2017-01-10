@@ -14,8 +14,9 @@ describe "Luosimao" do
       let(:phone) { '13928935535' }
 
       before do
-        stub_request(:post, "https://#{username}:#{password}@sms-api.luosimao.com/v1/send.json").
-          with(:body => {"message"=> content, "mobile"=> phone}).to_return(body: '{"error":0,"msg":"ok"}')
+        stub_request(:post, "https://sms-api.luosimao.com/v1/send.json").
+          with(:body => {"message"=> content, "mobile"=> phone}, :headers =>{'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Basic YXBpOnBhc3N3b3Jk', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'Ruby'}).
+          to_return(status: 200, body: '{"error":0,"msg":"ok"}', headers: {})
       end
 
       its([:success]) { should eql true }

@@ -4,8 +4,8 @@ require 'spec_helper'
 describe "Yunpian" do
   describe "#to" do
     let(:apikey) { '2022b1599967a8cb788c05ddd9fc339e' }
-    let(:send_url) { "http://yunpian.com/v1/sms/send.json" }
-    let(:tpl_send_url) { "http://yunpian.com/v1/sms/tpl_send.json" }
+    let(:send_url) { 'https://sms.yunpian.com/v2/sms/batch_send.json' }
+    let(:tpl_send_url) { 'https://sms.yunpian.com/v2/sms/tpl_batch_send.json' }
     let(:content) { '云片测试：验证码 1234。' }
     let(:tpl_content) { Hash[:code, 123, :company, '云片网'] }
 
@@ -129,6 +129,39 @@ describe "Yunpian" do
         its(["detail"]) { should eql "请检查的apikey是否正确" }
       end
     end
+  end
 
+  describe '#voice_to' do
+    let(:apikey) { '2022b1599967a8cb788c05ddd9fc339e' }
+    let(:voice_send_url) { 'https://voice.yunpian.com/v2/voice/send.json' }
+    let(:content) { '8888' }
+    let(:phone) { '13928452841' }
+    subject { ChinaSMS::Service::Yunpian.voice_to phone, content, password: apikey }
+
+    before do
+      stub_request(:post, voice_send_url).
+        with(
+          body: {
+            "apikey" => apikey,
+            "mobile" => phone,
+            "code" => content},
+          headers: {
+            'Content-Type' => 'application/x-www-form-urlencoded'
+          }).
+        to_return(
+          body: {
+            'code' => 0,
+            'msg' => 'OK',
+            'result' => {
+              'count' => '1',
+              'fee' => '1',
+              'sid' => '592762800'
+            }
+          }.to_json
+        )
+    end
+
+    its(["code"]) { should eql 0 }
+    its(["msg"]) { should eql "OK" }
   end
 end

@@ -22,6 +22,26 @@ describe "ChinaSMS" do
       its([:success]) { should eql true }
       its([:code]) { should eql 0 }
     end
+
+    describe 'with voice service' do
+      let(:content){ '8888' }
+
+      describe "#voice_to" do
+        let(:service) { :yunpian }
+        subject { ChinaSMS.voice_to(phone, content) }
+        before { ChinaSMS::Service::Yunpian.stub(:voice_to).with(phone, content, username: username, password: password).and_return(success: true, code: 0) }
+        its([:success]) { should eql true }
+        its([:code]) { should eql 0 }
+      end
+
+      describe '#voice_to not provided' do
+        let(:content){ '8888' }
+        it 'should raise ServiceNotProvided' do
+          expect { ChinaSMS.voice_to(phone, content)}.to raise_error(ChinaSMS::ServiceNotProvided)
+        end
+      end
+    end
+
   end
 
   context 'without service' do

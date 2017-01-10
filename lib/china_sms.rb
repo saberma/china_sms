@@ -8,6 +8,8 @@ end
 module ChinaSMS
   extend self
 
+  class ServiceNotProvided < StandardError;end
+
   attr_reader :username, :password
 
   def use(service, options)
@@ -20,6 +22,17 @@ module ChinaSMS
   def to(receiver, content, options = {})
     options = default_options.merge options
     @service.to receiver, content, options if @service
+  end
+
+  def voice_to(receiver, content, options={})
+    options = default_options.merge options
+    if @service
+      if @service.respond_to?(:voice_to)
+        @service.voice_to receiver, content, options
+      else
+        raise ServiceNotProvided, "#{@service.name} not provide voice_to service!"
+      end
+    end
   end
 
   def get(options = {})
